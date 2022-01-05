@@ -26,9 +26,7 @@ const {
 app.post(`/api/login`, login)
 app.post(`/api/register`, register)
 
-const port = process.env.PORT || 4545
-
-app.listen(port, ()=>{console.log(`Chewy hit port ${port}.`)})
+app.listen(SERVER_PORT, ()=>{console.log(`Chewy hit port ${SERVER_PORT}.`)})
 
 app.get('/css', function (req,res) {
     res.sendFile(path.join(__dirname, "../client/styles.css"))
