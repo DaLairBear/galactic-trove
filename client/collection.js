@@ -5,8 +5,8 @@ const autoComplete = (e) => {
     .then((autoRes) => {
       console.log(autoRes.data)
       showResultsCard(autoRes.data.data)
-    });
-};
+    })
+}
 
 cardNameEntry.addEventListener("input", autoComplete)
 
@@ -85,7 +85,51 @@ function showResultsSet(arr) {
     closeList()
 } 
 
+let setQuanityEntry = document.querySelector(".quantity-input")
+let qualityEntry = document.querySelector(".quality-select")
+let setQualityEntry = qualityEntry.options[qualityEntry.selectedIndex]
+let setBoughtValue = document.querySelector(".bought-value")
+let addButton = document.querySelector(".add-card-btn")
+// let cardValue = cardValueCalc()
 
 const addToCollection = (e) =>{
-    
+  console.log('add')
+    res = document.getElementById("collection-inputs")
+    res.innerHTML = `
+    <tr class="collection-inputs">
+      <td class="collection-inputs">
+        <button id="delete-button" type="button"  class="collection-inputs">X</button>
+      </td>
+      <td  class="collection-inputs">${cardNameEntry.value}</td>
+      <td  class="collection-inputs">${setNameEntry.value}</td>
+      <td  class="collection-inputs">${setQuanityEntry.value}</td>
+      <td  class="collection-inputs">${setQualityEntry.value}</td>
+      <td  class="collection-inputs">${setBoughtValue.value}</td>
+      <td  class="collection-inputs"></td>
+    </tr>
+    `
+
+  }
+  
+  addButton.addEventListener("click", addToCollection)
+  
+  // let deleteButton = document.querySelector("#delete-button")
+  // deleteButton.addEventListener("click", deleteCard)
+  
+
+const deleteCard = (e) =>{
+  let x = document.getElementsByClassName('collection-inputs')
+  for(let i = 0; i < x.length; i++){
+      x[i].parentNode.removeChild(x[i])
+  }
 }
+
+
+
+// const cardValueCalc = (e) =>{
+//   axios.get(`https://api.scryfall.com/cards/named?exact${setNameEntry}&set=`)
+//     .then((autoRes) => {
+//       console.log(autoRes.data)
+//       showResultsCard(autoRes.data.data)
+//     })
+// }

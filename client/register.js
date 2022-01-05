@@ -6,6 +6,7 @@ const baseURL = `http://localhost:4545/api`
 
 const register = body => axios.post(`${baseURL}/register`, body).then(res => {
     console.log(res.data)
+    alert(`Thank you for registering with Galactic Trove ${res.data.username}`)
   }).catch(err => {
     console.log(err)
     alert('Uh oh. Your request did not work.')

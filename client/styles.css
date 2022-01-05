@@ -114,6 +114,9 @@ body {
     background-color: rgb(252, 118, 67, 0.5);
 }
 
+#collection-inputs {
+    background-color: rgb(175, 79, 65, 0.5);
+}
 
 #result-card ul {
     background-color: rgb(252, 118, 67, 0.5);
