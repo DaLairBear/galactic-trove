@@ -37,5 +37,12 @@ module.exports = {
                 res.sendStatus(200)
             }).catch(err => console.log('error sedding DB', err))
         
+    },
+    createUser: (req, res) => {
+        let {user_name, user_username, user_email, user_hash} = req.body
+        sequelize.query(`INSERT INTO users (user_name, user_username, user_email, user_hash)
+        VALUES ('${user_name}', '${user_username}', '${user_email}', '${user_hash}');`)
+        .then(dbres => res.status(200).send(dbRes[0]))
+        .catch(err => console.log(err))
     }
 }
