@@ -95,6 +95,7 @@ let addButton = document.querySelector(".add-card-btn")
 
 const addToCollection = (e) =>{
   console.log('add')
+  
     res = document.getElementById("collection-inputs")
     res.innerHTML = `
     <tr class="collection-inputs">
@@ -112,6 +113,7 @@ const addToCollection = (e) =>{
 
     let deleteButton = document.querySelector("#delete-button")
     deleteButton.addEventListener("click", deleteCard)
+    // getCardValue(getSetCode(setNameEntry.value))
   }
   
   addButton.addEventListener("click", addToCollection)
@@ -125,6 +127,41 @@ const deleteCard = (e) =>{
   }
 }
 
+// const cardValue = 0.00
+
+// const getSetCode = (setname) =>{
+//   axios.get('https://api.scryfall.com/sets')
+//   .then((autoRes) => {
+//     let x = autoRes.data.data
+//     let setCode = []
+//     for(let i = 0; i < x.length; i++){
+//       let y = x[i].name
+//       //console.log(y, set)
+//       if(y === setname){
+//         setCode.push(x[i].code)
+//       }
+
+//     }
+//     return setCode[0]
+// })
+// }
+
+
+// const getCardValue = (setCode) =>{
+//   axios.get(`https://api.scryfall.com/cards/named?exact=${cardNameEntry.value.split(' ').join('+')}&set=${setCode[0]}`)
+//   .then((autoRes) => {
+//     console.log(autoRes)
+//     console.log(autoRes.data)
+//     console.log(autoRes.data.prices)
+//     console.log(autoRes.data.prices.usd)
+//     console.log(parseFloat(autoRes.data.prices.usd))
+//     let cardPrice = autoRes.data.prices.usd
+//     console.log(typeof cardPrice)
+//     cardValue += parseFloat(autoRes.data.price.usd.value)
+    
+    
+//   })
+// }
 
 
 async function cardValueCalc(set){
@@ -149,9 +186,8 @@ async function cardValueCalc(set){
       console.log(autoRes.data.prices)
       console.log(autoRes.data.prices.usd)
       console.log(parseFloat(autoRes.data.prices.usd))
-      return parseFloat(autoRes.data.price.usd)
-      
-      
+      price = autoRes.data.prices.usd
+
     })
   })
 }
