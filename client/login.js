@@ -4,10 +4,8 @@ const loginForm = document.querySelector('#login')
 const baseURL = `http://localhost:4545/api`
 
 const login = body => axios.post(`${baseURL}/login`, body).then( res => {
-    console.log(res.data)
     alert(`Welcome ${res.data.username}`)
     }).catch(err => {
-    console.log(err)
     alert('Uh oh. Your request did not work.')
     })
 

@@ -5,10 +5,8 @@ const baseURL = `http://localhost:4545/api`
 
 
 const register = body => axios.post(`${baseURL}/register`, body).then(res => {
-    console.log(res.data)
     alert(`Thank you for registering with Galactic Trove ${res.data.username}`)
   }).catch(err => {
-    console.log(err)
     alert('Uh oh. Your request did not work.')
   })
 
@@ -16,7 +14,6 @@ const register = body => axios.post(`${baseURL}/register`, body).then(res => {
 
 function registerSubmitHandler(e) {
     e.preventDefault()
-  console.log('testing log')
     let name = document.querySelector('#register-name')
     let email = document.querySelector('#register-email')
     let username = document.querySelector('#register-username')
@@ -42,7 +39,5 @@ function registerSubmitHandler(e) {
     email.value = ''
     password.value = ''
     passwordConfirm.value = ''
-    console.log("user created")
 }
-console.log(registerForm)
 registerForm.addEventListener('submit', registerSubmitHandler)

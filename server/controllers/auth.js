@@ -4,9 +4,7 @@ const users = []
 module.exports = {
     login: (req, res) => {
       const { username, password } = req.body
-      console.log(username, password)
       for (let i = 0; i < users.length; i++) {
-        console.log(users[i], username)
         if (users[i].username === username) {
           const authentication = bcrypt.compareSync(password, users[i].passwordHash)
 

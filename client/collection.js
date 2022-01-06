@@ -3,7 +3,6 @@ let cardNameEntry = document.querySelector("#card-name-entry");
 const autoComplete = (e) => {
   axios.get(`https://api.scryfall.com/cards/autocomplete?q=${cardNameEntry.value}`)
     .then((autoRes) => {
-      console.log(autoRes.data)
       showResultsCard(autoRes.data.data)
     })
 }
@@ -20,14 +19,12 @@ function showResultsCard(arr) {
   
   res.innerHTML = "<ul class='result-item'>" + list + "</ul>"
   let resultItems = document.querySelectorAll('.result-item')
-  console.log(resultItems)
   for(let i = 0; i <resultItems.length; i++){
       resultItems[i].addEventListener("click", getItemInfoCard)
   }
 }
 
 const getItemInfoCard = (e) =>{
-    console.log(e.target.id)
     cardNameEntry.value = e.target.id
     closeList()
 }
@@ -45,19 +42,16 @@ let setNameEntry = document.querySelector("#set-name-entry")
 const setfinder = (e) =>{
     axios.get(`https://api.scryfall.com/sets`)
     .then((autoRes) => {
-        console.log(autoRes.data.data)
         let x = autoRes.data.data
         let results = []
         
         if(setNameEntry.value.length > 1){
           for(let i = 0; i < x.length; i++){
             let y = x[i].name
-            //console.log(y)
             if(y.includes(setNameEntry.value)){
                 results.push(y)
           }
         }
-        console.log(results)
         showResultsSet(results)}
     })
 }
@@ -74,14 +68,12 @@ function showResultsSet(arr) {
     
     res.innerHTML = "<ul class='result-item'>" + list + "</ul>"
     let resultItems = document.querySelectorAll('.result-item')
-    console.log(resultItems)
     for(let i = 0; i <resultItems.length; i++){
         resultItems[i].addEventListener("click", getItemInfoSet)
     }
   }
 
   const getItemInfoSet = (e) =>{
-    console.log(e.target.id)
     setNameEntry.value = e.target.id
     closeList()
 } 
@@ -91,10 +83,8 @@ let qualityEntry = document.querySelector(".quality-select")
 let setQualityEntry = qualityEntry.options[qualityEntry.selectedIndex]
 let setBoughtValue = document.querySelector(".bought-value")
 let addButton = document.querySelector(".add-card-btn")
-//let cardValue = document.querySelector("#value")
 
 const addToCollection = async (e) =>{
-  console.log('add')
     res = document.getElementById("collection-inputs")
     res.innerHTML = `
     <tr class="collection-inputs">
@@ -112,17 +102,13 @@ const addToCollection = async (e) =>{
 
     let deleteButton = document.querySelector("#delete-button")
     deleteButton.addEventListener("click", deleteCard)
-    // getCardValue(getSetCode(setNameEntry.value))
 
       let cardValue = await cardValueCalc(setNameEntry.value)
       let valueUpdate = document.querySelector("#value")
       valueUpdate.innerText = cardValue
-      console.log(cardValue)
   }
   
   addButton.addEventListener("click", addToCollection)
-  
-  
 
 const deleteCard = (e) =>{
   let x = document.getElementsByClassName('collection-inputs')
@@ -131,74 +117,22 @@ const deleteCard = (e) =>{
   }
 }
 
-// const cardValue = 0.00
-
-// const getSetCode = (setname) =>{
-//   axios.get('https://api.scryfall.com/sets')
-//   .then((autoRes) => {
-//     let x = autoRes.data.data
-//     let setCode = []
-//     for(let i = 0; i < x.length; i++){
-//       let y = x[i].name
-//       //console.log(y, set)
-//       if(y === setname){
-//         setCode.push(x[i].code)
-//       }
-
-//     }
-//     return setCode[0]
-// })
-// }
-
-
-// const getCardValue = (setCode) =>{
-//   axios.get(`https://api.scryfall.com/cards/named?exact=${cardNameEntry.value.split(' ').join('+')}&set=${setCode[0]}`)
-//   .then((autoRes) => {
-//     console.log(autoRes)
-//     console.log(autoRes.data)
-//     console.log(autoRes.data.prices)
-//     console.log(autoRes.data.prices.usd)
-//     console.log(parseFloat(autoRes.data.prices.usd))
-//     let cardPrice = autoRes.data.prices.usd
-//     console.log(typeof cardPrice)
-//     cardValue += parseFloat(autoRes.data.price.usd.value)
-    
-    
-//   })
-// }
-
-
 async function cardValueCalc(set){
   let code = await axios.get('https://api.scryfall.com/sets')
   .then((autoRes) => {
-    console.log("Result", autoRes)
     let x = autoRes.data.data
     let setCode = []
     for(let i = 0; i < x.length; i++){
       let y = x[i].name
-      //console.log(y, set)
       if(y === set){
         setCode.push(x[i].code)
       }
-      //console.log("setCode", setCode)
     }
-    console.log('setcode', setCode)
     return setCode[0]
   })
-
-    console.log("Code", code)
-    console.log(`https://api.scryfall.com/cards/named?exact=${cardNameEntry.value.split(' ').join('+')}&set=${code}`)
     let price = await axios.get(`https://api.scryfall.com/cards/named?exact=${cardNameEntry.value.split(' ').join('+')}&set=${code}`)
     .then((autoRes) => {
-      console.log(autoRes)
-      console.log(autoRes.data)
-      console.log(autoRes.data.prices)
-      console.log(autoRes.data.prices.usd)
-      console.log(parseFloat(autoRes.data.prices.usd))
       return autoRes.data.prices.usd
     })
-    console.log("Price", price)
     return price;
 }
-
-//console.log(cardValueCalc(setNameEntry.value))
