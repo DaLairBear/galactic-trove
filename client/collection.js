@@ -95,7 +95,6 @@ let addButton = document.querySelector(".add-card-btn")
 
 const addToCollection = (e) =>{
   console.log('add')
-  
     res = document.getElementById("collection-inputs")
     res.innerHTML = `
     <tr class="collection-inputs">
@@ -107,13 +106,19 @@ const addToCollection = (e) =>{
       <td  class="collection-inputs">${setQuanityEntry.value}</td>
       <td  class="collection-inputs">${setQualityEntry.value}</td>
       <td  class="collection-inputs">${setBoughtValue.value}</td>
-      <td id="value" class="collection-inputs">${cardValueCalc(setNameEntry.value)}</td>
+      <td id="value" class="collection-inputs"></td>
     </tr>
     `
 
     let deleteButton = document.querySelector("#delete-button")
     deleteButton.addEventListener("click", deleteCard)
     // getCardValue(getSetCode(setNameEntry.value))
+
+    let valueUpdate = document.querySelector("#value")
+    setTimeout(()=>{
+      valueUpdate.value = cardValueCalc(setNameEntry.value)
+      console.log(cardValueCalc(setNameEntry.value))
+    }, 1000)
   }
   
   addButton.addEventListener("click", addToCollection)
@@ -179,6 +184,7 @@ async function cardValueCalc(set){
     }
     console.log(setCode)
     //console.log(`https://api.scryfall.com/cards/named?exact=${cardNameEntry.value.split(' ').join('+')}&set=${setCode[0]}`)
+    let price;
     axios.get(`https://api.scryfall.com/cards/named?exact=${cardNameEntry.value.split(' ').join('+')}&set=${setCode[0]}`)
     .then((autoRes) => {
       console.log(autoRes)
@@ -187,7 +193,10 @@ async function cardValueCalc(set){
       console.log(autoRes.data.prices.usd)
       console.log(parseFloat(autoRes.data.prices.usd))
       price = autoRes.data.prices.usd
-
+      
     })
+    return price
   })
 }
+
+//console.log(cardValueCalc(setNameEntry.value))
