@@ -154,6 +154,7 @@ body {
     color: rgb(255, 235, 210);
     display: inline-block;
     margin-top: 100px;
+    width: 50%;
 }
 
 img {
