@@ -11,43 +11,44 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0-rc.1/themes/smoothness/jquery-ui.css">
 </head>
 <body>
-    <div class="site-containter"></div>
-    <header>
-        <div id="header">
-            <nav id="main-nav">
-                <ul>
-                    <li>
-                        <a href="home.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="collection.html">Collection</a>
-                    </li>
-                </ul>
-            </nav>
-            <nav id="account-nav">
-                <ul>
-                    <li>
-                        <a href="login.html">Login</a>
-                    </li>
-                    <li>
-                        <a href="register.html">Register</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <table class="collection-table">
-            <thead class="collection-table-header">
-                <tr id="collection-table-name">
-                    <th colspan="7" contenteditable="true">Name Your Collection</th>
-                </tr>
-                <tr id="collection-table-totals">
-                    <th colspan="5"></th>
-                    <th>$$$</th>
-                    <th>$$$</th>
-                </tr>
-                <tr id="collection-table-header-names"></tr>
+    <div class="site-containter">
+        <img src="/Artboard 1.png" alt="Galactic Trove Logo" width="75" height="75">
+        <header>
+            <div id="header">
+                <nav id="main-nav">
+                    <ul>
+                        <li>
+                            <a href="home.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="collection.html">Collection</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav id="account-nav">
+                    <ul>
+                        <li>
+                            <a href="login.html">Login</a>
+                        </li>
+                        <li>
+                            <a href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <table class="collection-table">
+                <thead class="collection-table-header">
+                    <tr id="collection-table-name">
+                        <th colspan="7" contenteditable="true">Name Your Collection</th>
+                    </tr>
+                    <tr id="collection-table-totals">
+                        <th colspan="5"></th>
+                        <th>$$$</th>
+                        <th>$$$</th>
+                    </tr>
+                    <tr id="collection-table-header-names"></tr>
                     <th></th>
                     <th>Card Name</th>
                     <th>Set</th>
@@ -62,21 +63,21 @@
                     <tr>
                         <td>
                             <button 
-                                type="button"
-                                class="add-card-btn"
+                            type="button"
+                            class="add-card-btn"
                             >Add</button>
                         </td>
                         <td>
                             <input
-                                type="search"
-                                class="card-name-entry"
-                                id="card-name-entry"
-                                placeholder="Search for the card"
-                                size="50"
+                            type="search"
+                            class="card-name-entry"
+                            id="card-name-entry"
+                            placeholder="Search for the card"
+                            size="50"
                             />
                             <div id="result-card"></div>
                         </td>
-
+                        
                         <td> 
                             <input
                             type="search"
@@ -84,16 +85,16 @@
                             id="set-name-entry"
                             placeholder="Search for the set"
                             size="50"
-                        />
-                        <div id="result-set"></div>
+                            />
+                            <div id="result-set"></div>
                         </td>
-
+                        
                         <td>
                             <input
-                                type="number"
-                                class="quantity-input"
-                                placeholder="0"
-                                size="10"
+                            type="number"
+                            class="quantity-input"
+                            placeholder="0"
+                            size="10"
                             />
                         </td>
                         <td>
@@ -118,6 +119,7 @@
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="collection.js"></script>
-
+    
+</div>
 </body>
 </html>

@@ -147,3 +147,17 @@ body {
   #result-set ul li:hover {
     background: rgb(255, 163, 100, 0.5);
   }
+
+  #content{
+    background-color: rgb(175, 79, 65, 0.5);
+	text-decoration: none;
+    color: rgb(255, 235, 210);
+    display: inline-block;
+    margin-top: 100px;
+}
+
+img {
+    position: absolute;
+    z-index: 10;
+    
+}
